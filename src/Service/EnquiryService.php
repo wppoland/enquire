@@ -157,6 +157,19 @@ final class EnquiryService implements HasHooks
 
         $this->markRateLimit();
 
+        /**
+         * Fires after an enquiry has been successfully emailed. PRO add-ons hook
+         * here to log the enquiry, send the shopper a confirmation copy, etc.
+         *
+         * @param \WC_Product          $product The product the enquiry is about.
+         * @param array<string, mixed> $enquiry The sanitised submission.
+         */
+        do_action('enquire/enquiry_sent', $product, [
+            'name'    => $name,
+            'email'   => $email,
+            'message' => $message,
+        ]);
+
         wp_send_json_success([
             'message' => (string) ($settings['success_message'] ?? __('Thanks! Your question has been sent.', 'enquire')),
         ]);
