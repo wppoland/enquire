@@ -1,0 +1,374 @@
+# Copyright (C) 2026 WPPoland
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Enquire - Product Enquiry Form for WooCommerce 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/enquire\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-14T14:04:45+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: enquire\n"
+
+#. Plugin Name of the plugin
+#: enquire.php
+msgid "Enquire - Product Enquiry Form for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: enquire.php
+msgid "https://plogins.com/enquire/"
+msgstr ""
+
+#. Description of the plugin
+#: enquire.php
+msgid "Add an Ask a Question form to products that emails the store owner."
+msgstr ""
+
+#. Author of the plugin
+#: enquire.php
+msgid "WPPoland"
+msgstr ""
+
+#. Author URI of the plugin
+#: enquire.php
+msgid "https://plogins.com/"
+msgstr ""
+
+#: enquire.php:47
+msgid "Enquire - Product Enquiry Form for WooCommerce requires WooCommerce to be active."
+msgstr ""
+
+#: src/Admin/Settings.php:60
+msgid "Enquire Settings"
+msgstr ""
+
+#: src/Admin/Settings.php:61
+msgid "Enquire"
+msgstr ""
+
+#: src/Admin/Settings.php:105
+msgid "Let shoppers ask about a product before they buy"
+msgstr ""
+
+#: src/Admin/Settings.php:106
+msgid "Enquire adds an “Ask a question” button to your single product pages. Clicking it opens an accessible form (name, email, message) that emails you the question with the product details — no data is stored. Tune everything below; hover a “?” for a quick explanation."
+msgstr ""
+
+#: src/Admin/Settings.php:114
+msgid "General"
+msgstr ""
+
+#: src/Admin/Settings.php:115
+msgid "The master switch and where enquiries are delivered."
+msgstr ""
+
+#: src/Admin/Settings.php:121
+msgid "Enable enquiries"
+msgstr ""
+
+#: src/Admin/Settings.php:122
+msgid "Master switch. When off, no button or form is shown and no front-end assets are loaded."
+msgstr ""
+
+#: src/Admin/Settings.php:134
+msgid "Show the “Ask a question” button on single product pages."
+msgstr ""
+
+#: src/Admin/Settings.php:140
+msgid "Recipient email"
+msgstr ""
+
+#: src/Admin/Settings.php:141
+msgid "Where enquiries are sent. Leave empty to use your site’s admin email address."
+msgstr ""
+
+#: src/Admin/Settings.php:153
+msgid "Enquiries are emailed here. The customer’s address is set as Reply-To so you can reply directly."
+msgstr ""
+
+#: src/Admin/Settings.php:161
+msgid "Trigger button"
+msgstr ""
+
+#: src/Admin/Settings.php:162
+msgid "How and where the enquiry button appears on the product page."
+msgstr ""
+
+#: src/Admin/Settings.php:167
+msgid "Button label"
+msgstr ""
+
+#: src/Admin/Settings.php:167
+msgid "Text on the trigger button."
+msgstr ""
+
+#: src/Admin/Settings.php:167
+msgid "The clickable label, e.g. “Ask a question” or “Enquire now”."
+msgstr ""
+
+#: src/Admin/Settings.php:171
+msgid "Button placement"
+msgstr ""
+
+#: src/Admin/Settings.php:172
+msgid "Where the button is injected on the single product page. “After add to cart” suits most themes."
+msgstr ""
+
+#: src/Admin/Settings.php:177
+msgid "After the add-to-cart button"
+msgstr ""
+
+#: src/Admin/Settings.php:178
+msgid "Before the add-to-cart button"
+msgstr ""
+
+#: src/Admin/Settings.php:179
+msgid "At the end of the product summary"
+msgstr ""
+
+#: src/Admin/Settings.php:181
+msgid "Pick the spot that best fits your theme’s product layout."
+msgstr ""
+
+#: src/Admin/Settings.php:189
+msgid "Form fields"
+msgstr ""
+
+#: src/Admin/Settings.php:190
+msgid "Field labels and which fields a shopper must complete. Empty labels fall back to the built-in defaults."
+msgstr ""
+
+#: src/Admin/Settings.php:195
+msgid "Form title"
+msgstr ""
+
+#: src/Admin/Settings.php:195
+msgid "Heading shown at the top of the dialog."
+msgstr ""
+
+#: src/Admin/Settings.php:195
+msgid "Announced to screen-reader users when the dialog opens, and shown as its heading."
+msgstr ""
+
+#: src/Admin/Settings.php:196
+msgid "Name field label"
+msgstr ""
+
+#: src/Admin/Settings.php:196
+msgid "Label for the name input."
+msgstr ""
+
+#: src/Admin/Settings.php:197
+msgid "Email field label"
+msgstr ""
+
+#: src/Admin/Settings.php:197
+msgid "Label for the email input."
+msgstr ""
+
+#: src/Admin/Settings.php:198
+msgid "Message field label"
+msgstr ""
+
+#: src/Admin/Settings.php:198
+msgid "Label for the message textarea."
+msgstr ""
+
+#: src/Admin/Settings.php:199
+msgid "Submit button label"
+msgstr ""
+
+#: src/Admin/Settings.php:199
+msgid "Label for the send button."
+msgstr ""
+
+#: src/Admin/Settings.php:200
+msgid "Require name"
+msgstr ""
+
+#: src/Admin/Settings.php:200
+msgid "Make the name field required."
+msgstr ""
+
+#: src/Admin/Settings.php:200
+msgid "When on, the form cannot be submitted without a name."
+msgstr ""
+
+#: src/Admin/Settings.php:201
+msgid "Require email"
+msgstr ""
+
+#: src/Admin/Settings.php:201
+msgid "Make the email field required."
+msgstr ""
+
+#: src/Admin/Settings.php:201
+msgid "Recommended on so you can reply. A valid email format is always enforced when an address is entered."
+msgstr ""
+
+#: src/Admin/Settings.php:202
+msgid "Require message"
+msgstr ""
+
+#: src/Admin/Settings.php:202
+msgid "Make the message field required."
+msgstr ""
+
+#: src/Admin/Settings.php:202
+msgid "When on, the form cannot be submitted with an empty message."
+msgstr ""
+
+#: src/Admin/Settings.php:209
+msgid "Messaging"
+msgstr ""
+
+#: src/Admin/Settings.php:210
+msgid "What shoppers see after submitting, and the email subject line."
+msgstr ""
+
+#: src/Admin/Settings.php:215
+msgid "Success message"
+msgstr ""
+
+#: src/Admin/Settings.php:215
+msgid "Shown after a successful submission."
+msgstr ""
+
+#: src/Admin/Settings.php:215
+msgid "A friendly confirmation shown inline once the enquiry is sent."
+msgstr ""
+
+#: src/Admin/Settings.php:216
+msgid "Error message"
+msgstr ""
+
+#: src/Admin/Settings.php:216
+msgid "Shown if the submission fails."
+msgstr ""
+
+#: src/Admin/Settings.php:216
+msgid "Shown if sending fails (e.g. a mail error). Reassure the shopper they can try again."
+msgstr ""
+
+#: src/Admin/Settings.php:217
+msgid "Email subject"
+msgstr ""
+
+#: src/Admin/Settings.php:217
+msgid "Subject line of the enquiry email. Use {product} for the product name."
+msgstr ""
+
+#: src/Admin/Settings.php:217
+msgid "The subject of the email you receive. {product} is replaced with the product name."
+msgstr ""
+
+#: src/Admin/Settings.php:240
+msgid "More information"
+msgstr ""
+
+#: src/Service/EnquiryService.php:122
+msgid "Your session expired. Please reload the page and try again."
+msgstr ""
+
+#: src/Service/EnquiryService.php:128
+msgid "Please wait a moment before sending another enquiry."
+msgstr ""
+
+#: src/Service/EnquiryService.php:136
+#: src/Service/EnquiryService.php:154
+msgid "Sorry, something went wrong. Please try again."
+msgstr ""
+
+#: src/Service/EnquiryService.php:161
+msgid "Thanks! Your question has been sent."
+msgstr ""
+
+#: src/Service/EnquiryService.php:176
+msgid "Please enter your name."
+msgstr ""
+
+#: src/Service/EnquiryService.php:181
+msgid "Please enter your email address."
+msgstr ""
+
+#: src/Service/EnquiryService.php:183
+#: src/Service/EnquiryService.php:186
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: src/Service/EnquiryService.php:190
+msgid "Please enter your question."
+msgstr ""
+
+#: src/Service/EnquiryService.php:212
+msgid "(not provided)"
+msgstr ""
+
+#. translators: %s: product name.
+#: src/Service/EnquiryService.php:218
+#, php-format
+msgid "New product enquiry for: %s"
+msgstr ""
+
+#. translators: %s: customer name.
+#: src/Service/EnquiryService.php:222
+#, php-format
+msgid "Name: %s"
+msgstr ""
+
+#. translators: %s: customer email.
+#: src/Service/EnquiryService.php:224
+#, php-format
+msgid "Email: %s"
+msgstr ""
+
+#: src/Service/EnquiryService.php:226
+msgid "Message:"
+msgstr ""
+
+#: src/Service/EnquiryService.php:227
+msgid "(no message)"
+msgstr ""
+
+#: templates/enquiry-form.php:17
+msgid "Ask a question"
+msgstr ""
+
+#: templates/enquiry-form.php:18
+msgid "Ask a question about this product"
+msgstr ""
+
+#: templates/enquiry-form.php:19
+msgid "Your name"
+msgstr ""
+
+#: templates/enquiry-form.php:20
+msgid "Your email"
+msgstr ""
+
+#: templates/enquiry-form.php:21
+msgid "Your question"
+msgstr ""
+
+#: templates/enquiry-form.php:22
+msgid "Send enquiry"
+msgstr ""
+
+#: templates/enquiry-form.php:54
+msgid "Close"
+msgstr ""
+
+#. translators: %s: product name.
+#: templates/enquiry-form.php:63
+#, php-format
+msgid "About: %s"
+msgstr ""
+
+#: templates/enquiry-form.php:77
+msgid "Leave this field empty"
+msgstr ""

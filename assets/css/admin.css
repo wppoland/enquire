@@ -1,0 +1,107 @@
+/**
+ * Enquire — admin settings screen styling. Dark-mode aware, accessible help tips.
+ */
+
+.enquire-admin__intro {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    max-width: 760px;
+    margin: 16px 0 24px;
+    padding: 18px 20px;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-left: 4px solid #2563eb;
+    border-radius: 8px;
+}
+
+.enquire-admin__intro-icon {
+    flex: 0 0 auto;
+    color: #2563eb;
+}
+
+.enquire-admin__intro-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.enquire-admin__intro-text h2 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+}
+
+.enquire-admin__intro-text p {
+    margin: 0;
+    color: #50575e;
+}
+
+.enquire-admin__section {
+    max-width: 760px;
+    margin: 0 0 24px;
+    padding: 4px 20px 12px;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 8px;
+}
+
+.enquire-admin__section-intro {
+    color: #50575e;
+    margin: 8px 0 4px;
+}
+
+/* Help tip ------------------------------------------------------------- */
+
+.enquire-help {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-left: 6px;
+    padding: 0;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    background: #787c82;
+    border: 0;
+    border-radius: 50%;
+    cursor: help;
+    vertical-align: middle;
+    transition: background-color 120ms ease;
+}
+
+.enquire-help:hover,
+.enquire-help:focus-visible {
+    background: #2563eb;
+}
+
+.enquire-help-tip {
+    position: absolute;
+    z-index: 10;
+    max-width: 280px;
+    margin: 0;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background: #1d2327;
+    border: 0;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+    .enquire-admin__intro,
+    .enquire-admin__section {
+        background: #1e2127;
+        border-color: #3a3f47;
+        color: #e7e9ee;
+    }
+
+    .enquire-admin__intro-text p,
+    .enquire-admin__section-intro {
+        color: #9aa1ac;
+    }
+}

@@ -1,0 +1,200 @@
+/**
+ * Enquire — front-end styles for the trigger button and enquiry dialog.
+ * Modern, theme-agnostic, accessible. Motion is gated by prefers-reduced-motion.
+ */
+
+.enquire {
+    --enquire-radius: 10px;
+    --enquire-gap: 16px;
+    --enquire-accent: var(--wp--preset--color--primary, #2563eb);
+    --enquire-fg: #1f2329;
+    --enquire-muted: #6b7280;
+    --enquire-border: #d6d9de;
+    --enquire-bg: #ffffff;
+    --enquire-error: #b42318;
+    --enquire-success: #027a48;
+    margin: var(--enquire-gap) 0;
+}
+
+.enquire__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.enquire__icon {
+    flex: 0 0 auto;
+}
+
+/* Dialog ---------------------------------------------------------------- */
+
+.enquire__dialog {
+    width: min(540px, calc(100vw - 32px));
+    max-width: 540px;
+    padding: 0;
+    border: 1px solid var(--enquire-border);
+    border-radius: var(--enquire-radius);
+    background: var(--enquire-bg);
+    color: var(--enquire-fg);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+}
+
+.enquire__dialog::backdrop {
+    background: rgba(15, 23, 42, 0.55);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .enquire__dialog[open] {
+        animation: enquire-pop 160ms ease-out;
+    }
+
+    .enquire__dialog::backdrop {
+        animation: enquire-fade 160ms ease-out;
+    }
+}
+
+@keyframes enquire-pop {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes enquire-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.enquire__panel {
+    padding: 24px;
+}
+
+.enquire__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.enquire__title {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.3;
+}
+
+.enquire__close {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--enquire-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+.enquire__close:hover,
+.enquire__close:focus-visible {
+    background: rgba(15, 23, 42, 0.06);
+    color: var(--enquire-fg);
+}
+
+.enquire__product {
+    margin: 0 0 16px;
+    color: var(--enquire-muted);
+    font-size: 0.92rem;
+}
+
+.enquire__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0 0 14px;
+}
+
+.enquire__field label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.enquire__required {
+    color: var(--enquire-error);
+    margin-left: 2px;
+}
+
+.enquire__field input,
+.enquire__field textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--enquire-fg);
+    background: var(--enquire-bg);
+    border: 1px solid var(--enquire-border);
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.enquire__field input:focus-visible,
+.enquire__field textarea:focus-visible {
+    outline: none;
+    border-color: var(--enquire-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--enquire-accent) 25%, transparent);
+}
+
+.enquire__field textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+/* Honeypot: removed from layout and from assistive tech. */
+.enquire__hp {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.enquire__status {
+    margin: 0 0 14px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.enquire__status--error {
+    background: color-mix(in srgb, var(--enquire-error) 10%, transparent);
+    color: var(--enquire-error);
+}
+
+.enquire__status--success {
+    background: color-mix(in srgb, var(--enquire-success) 10%, transparent);
+    color: var(--enquire-success);
+}
+
+.enquire__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.enquire__submit[aria-busy="true"] {
+    opacity: 0.7;
+    cursor: progress;
+}
+
+@media (prefers-color-scheme: dark) {
+    .enquire {
+        --enquire-fg: #e7e9ee;
+        --enquire-muted: #9aa1ac;
+        --enquire-border: #3a3f47;
+        --enquire-bg: #1e2127;
+    }
+}
