@@ -42,10 +42,19 @@
 
 		var statusEl = form.querySelector('[data-enquire-status]');
 		var submitBtn = form.querySelector('[data-enquire-submit]');
+		var panel = widget.querySelector('[data-enquire-panel]');
+		var sealText = widget.querySelector('[data-enquire-seal-text]');
 		var lastFocused = null;
+
+		function clearSeal() {
+			if (panel) {
+				panel.removeAttribute('data-enquire-sent');
+			}
+		}
 
 		function openDialog() {
 			lastFocused = document.activeElement;
+			clearSeal();
 			setStatus(statusEl, '', null);
 			if (typeof dialog.showModal === 'function') {
 				dialog.showModal();
@@ -117,8 +126,16 @@
 					var message = (body.data && body.data.message) || '';
 
 					if (body.success) {
-						setStatus(statusEl, message || data.successMessage, 'success');
+						var sent = message || data.successMessage;
+						setStatus(statusEl, sent, 'success');
 						form.reset();
+						// Dispatch the note: the inked seal presses in.
+						if (sealText) {
+							sealText.textContent = sent;
+						}
+						if (panel) {
+							panel.setAttribute('data-enquire-sent', '');
+						}
 					} else {
 						setStatus(statusEl, message || data.errorMessage, 'error');
 					}

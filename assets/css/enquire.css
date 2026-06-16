@@ -1,18 +1,37 @@
 /**
  * Enquire — front-end styles for the trigger button and enquiry dialog.
- * Modern, theme-agnostic, accessible. Motion is gated by prefers-reduced-motion.
+ *
+ * World: written correspondence. A shopper asks a question; the note is
+ * dispatched to the merchant, who replies before the sale. The accent is
+ * iron-gall ink on warm manuscript paper — not a default UI blue. The one
+ * earned moment is the SEND: the note lifts away and an inked question-mark
+ * seal presses into the page to confirm the question is on its way.
+ *
+ * Themeable via --enquire-* tokens, each falling back to theme presets first.
+ * Motion gated by prefers-reduced-motion; dark scheme supported; no CLS.
  */
 
 .enquire {
-    --enquire-radius: 10px;
+    /* Iron-gall ink: a deep, slightly green-shifted navy — the colour of a
+       fountain pen, deliberately not a default UI blue (#2563eb). */
+    --enquire-ink: var(--wp--preset--color--contrast, #1d3a4a);
+    /* Manuscript amber: the seal / accent moment, warm against the ink.
+       Deepened to #9c5e1c so it clears WCAG AA as small text (the required
+       mark) on white/paper (>=4.5:1) while white and dark labels both clear
+       3:1 on the seal fill in either scheme. */
+    --enquire-seal: var(--wp--preset--color--primary, #9c5e1c);
+    --enquire-accent: var(--enquire-ink);
+
+    --enquire-radius: 12px;
     --enquire-gap: 16px;
-    --enquire-accent: var(--wp--preset--color--primary, #2563eb);
-    --enquire-fg: #1f2329;
+    --enquire-fg: #20242b;
     --enquire-muted: #6b7280;
-    --enquire-border: #d6d9de;
+    --enquire-border: #d8d2c4;
     --enquire-bg: #ffffff;
+    /* Warm paper tint behind the fields, so the dialog reads as a letter. */
+    --enquire-paper: #fbf7ef;
     --enquire-error: #b42318;
-    --enquire-success: #027a48;
+    --enquire-success: #1d3a4a;
     margin: var(--enquire-gap) 0;
 }
 
@@ -38,6 +57,7 @@
     background: var(--enquire-bg);
     color: var(--enquire-fg);
     box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+    overflow: hidden;
 }
 
 .enquire__dialog::backdrop {
@@ -65,9 +85,11 @@
 }
 
 .enquire__panel {
+    position: relative;
     padding: 24px;
 }
 
+/* Ink rule under the header — a ruled line, like letterhead. */
 .enquire__header {
     display: flex;
     align-items: flex-start;
@@ -78,8 +100,10 @@
 
 .enquire__title {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.22rem;
     line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--enquire-ink);
 }
 
 .enquire__close {
@@ -107,8 +131,11 @@
 
 .enquire__product {
     margin: 0 0 16px;
+    padding-bottom: 14px;
     color: var(--enquire-muted);
     font-size: 0.92rem;
+    /* Ruled line: the letterhead rule beneath the addressee. */
+    border-bottom: 1px solid var(--enquire-border);
 }
 
 .enquire__field {
@@ -124,7 +151,7 @@
 }
 
 .enquire__required {
-    color: var(--enquire-error);
+    color: var(--enquire-seal);
     margin-left: 2px;
 }
 
@@ -134,18 +161,19 @@
     padding: 10px 12px;
     font: inherit;
     color: var(--enquire-fg);
-    background: var(--enquire-bg);
+    background: var(--enquire-paper);
     border: 1px solid var(--enquire-border);
     border-radius: 8px;
     box-sizing: border-box;
-    transition: border-color 120ms ease, box-shadow 120ms ease;
+    transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
 }
 
 .enquire__field input:focus-visible,
 .enquire__field textarea:focus-visible {
     outline: none;
-    border-color: var(--enquire-accent);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--enquire-accent) 25%, transparent);
+    background: var(--enquire-bg);
+    border-color: var(--enquire-ink);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--enquire-ink) 22%, transparent);
 }
 
 .enquire__field textarea {
@@ -175,8 +203,8 @@
 }
 
 .enquire__status--success {
-    background: color-mix(in srgb, var(--enquire-success) 10%, transparent);
-    color: var(--enquire-success);
+    background: color-mix(in srgb, var(--enquire-ink) 9%, transparent);
+    color: var(--enquire-ink);
 }
 
 .enquire__actions {
@@ -185,16 +213,140 @@
     gap: 10px;
 }
 
+/* Submit reads as a wax-dark dispatch button. */
+.enquire__submit.button.alt,
+.enquire__submit {
+    background: var(--enquire-ink);
+    border-color: var(--enquire-ink);
+    color: #fff;
+}
+
 .enquire__submit[aria-busy="true"] {
     opacity: 0.7;
     cursor: progress;
 }
 
+/* The dispatch moment ---------------------------------------------------
+ * On a successful send, the form is marked [data-enquire-sent]. The note
+ * (form) lifts and fades away while an inked question-mark seal presses
+ * into the centre of the panel — the question is on its way. This is the
+ * single craft risk; everything else stays quiet.
+ */
+
+.enquire__seal {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    text-align: center;
+    padding: 24px;
+    background: var(--enquire-bg);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.enquire__seal-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--enquire-seal);
+    box-shadow:
+        0 0 0 6px color-mix(in srgb, var(--enquire-seal) 18%, transparent),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.22),
+        inset 0 3px 6px rgba(255, 255, 255, 0.25);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.enquire__seal-mark svg {
+    width: 46px;
+    height: 46px;
+}
+
+.enquire__seal-text {
+    margin: 0;
+    max-width: 28ch;
+    color: var(--enquire-ink);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.enquire__panel[data-enquire-sent] .enquire__form {
+    pointer-events: none;
+}
+
+.enquire__panel[data-enquire-sent] .enquire__seal {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .enquire__panel[data-enquire-sent] .enquire__form {
+        animation: enquire-dispatch 360ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .enquire__panel[data-enquire-sent] .enquire__seal {
+        animation: enquire-reveal 240ms ease-out 200ms both;
+    }
+
+    /* The seal presses down hard, then settles — like a stamp into wax. */
+    .enquire__panel[data-enquire-sent] .enquire__seal-mark {
+        animation: enquire-press 420ms cubic-bezier(0.34, 1.56, 0.64, 1) 220ms both;
+    }
+}
+
+/* Reduced-motion path: no movement, the seal is simply present. */
+@media (prefers-reduced-motion: reduce) {
+    .enquire__panel[data-enquire-sent] .enquire__form {
+        opacity: 0;
+    }
+}
+
+@keyframes enquire-dispatch {
+    to {
+        opacity: 0;
+        transform: translateY(-22px) scale(0.97);
+    }
+}
+
+@keyframes enquire-reveal {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes enquire-press {
+    0%   { transform: scale(1.9); opacity: 0; }
+    55%  { transform: scale(0.86); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
 @media (prefers-color-scheme: dark) {
     .enquire {
+        --enquire-ink: var(--wp--preset--color--contrast, #6fb2c9);
         --enquire-fg: #e7e9ee;
         --enquire-muted: #9aa1ac;
         --enquire-border: #3a3f47;
         --enquire-bg: #1e2127;
+        --enquire-paper: #242832;
+        --enquire-success: #6fb2c9;
+    }
+
+    .enquire__submit.button.alt,
+    .enquire__submit {
+        color: #11151a;
+    }
+
+    .enquire__seal-mark {
+        color: #1e2127;
     }
 }

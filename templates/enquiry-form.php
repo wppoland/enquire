@@ -48,7 +48,7 @@ $enquire_title_id  = $enquire_dialog_id . '-title';
         aria-labelledby="<?php echo esc_attr($enquire_title_id); ?>"
         data-enquire-dialog
     >
-        <div class="enquire__panel">
+        <div class="enquire__panel" data-enquire-panel>
             <div class="enquire__header">
                 <h2 class="enquire__title" id="<?php echo esc_attr($enquire_title_id); ?>"><?php echo esc_html($enquire_form_title); ?></h2>
                 <button type="button" class="enquire__close" data-enquire-close aria-label="<?php esc_attr_e('Close', 'enquire'); ?>">
@@ -128,6 +128,16 @@ $enquire_title_id  = $enquire_dialog_id . '-title';
                     </button>
                 </div>
             </form>
+
+            <?php // Dispatch seal: revealed by JS once the enquiry has been sent. ?>
+            <div class="enquire__seal" data-enquire-seal aria-hidden="true">
+                <span class="enquire__seal-mark">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M12 2.6c-2.5 0-4.5 1.7-4.7 4.1h2.5c.15-1.1 1.05-1.9 2.2-1.9 1.25 0 2.2.95 2.2 2.1 0 .9-.45 1.45-1.5 2.3-1.1.9-1.6 1.7-1.6 3.1v.5h2.4v-.4c0-.85.3-1.3 1.35-2.15C15.85 9.3 16.6 8.3 16.6 6.9 16.6 4.5 14.55 2.6 12 2.6Zm-1.45 14.1v2.7h2.9v-2.7h-2.9Z"/>
+                    </svg>
+                </span>
+                <p class="enquire__seal-text" data-enquire-seal-text></p>
+            </div>
         </div>
     </dialog>
 </div>
