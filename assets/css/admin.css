@@ -1,5 +1,13 @@
 /**
  * Enquire — admin settings screen styling. Dark-mode aware, accessible help tips.
+ *
+ * The section accent is the storefront's iron-gall ink (#1d3a4a) — the same
+ * pen the shopper-facing dialog is drawn with, so admin and storefront read as
+ * one family. Computed contrast on the wp-admin surface:
+ *   #1d3a4a on #fff     = 11.96:1  (AA text + UI: pass)
+ *   #1d3a4a on #f0f0f1  = 10.50:1  (AA text + UI: pass)
+ * Dark scheme uses the storefront's dark ink (#6fb2c9) as a 3px left rule only
+ * (decorative, not text), matching the front-end dark token.
  */
 
 .enquire-admin__intro {
@@ -11,13 +19,13 @@
     padding: 18px 20px;
     background: #fff;
     border: 1px solid #dcdcde;
-    border-left: 4px solid #2563eb;
+    border-left: 4px solid #1d3a4a;
     border-radius: 8px;
 }
 
 .enquire-admin__intro-icon {
     flex: 0 0 auto;
-    color: #2563eb;
+    color: #1d3a4a;
 }
 
 .enquire-admin__intro-icon svg {
@@ -41,7 +49,12 @@
     padding: 4px 20px 12px;
     background: #fff;
     border: 1px solid #dcdcde;
+    border-left: 4px solid #1d3a4a;
     border-radius: 8px;
+}
+
+.enquire-admin__section h2 {
+    color: #1d3a4a;
 }
 
 .enquire-admin__section-intro {
@@ -54,7 +67,15 @@
     .enquire-admin__section {
         background: #1e2127;
         border-color: #3a3f47;
+        /* Storefront dark-ink token, used only as a decorative left rule. */
+        border-left-color: #6fb2c9;
         color: #e7e9ee;
+    }
+
+    .enquire-admin__intro-icon,
+    .enquire-admin__section h2 {
+        /* #6fb2c9 on #1e2127 = 6.83:1 (AA text + UI: pass). */
+        color: #6fb2c9;
     }
 
     .enquire-admin__intro-text p,

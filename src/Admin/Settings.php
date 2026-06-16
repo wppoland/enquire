@@ -83,6 +83,7 @@ final class Settings implements HasHooks
         }
 
         $settings = $this->settings();
+        $defaults = $this->defaults();
         ?>
         <div class="wrap enquire-admin">
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
@@ -145,12 +146,12 @@ final class Settings implements HasHooks
 
                 <div class="enquire-admin__section">
                     <h2><?php esc_html_e('Trigger button', 'enquire'); ?></h2>
-                    <p class="enquire-admin__section-intro"><?php esc_html_e('The enquiry button shown after the add-to-cart button on the product page.', 'enquire'); ?></p>
+                    <p class="enquire-admin__section-intro"><?php esc_html_e('The enquiry button shown after the add-to-cart button on the product page. Clear any text field below to restore its packaged default (shown as the greyed hint).', 'enquire'); ?></p>
 
                     <table class="form-table" role="presentation">
                         <tbody>
                             <?php
-                            $this->textRow('button_text', __('Button label', 'enquire'), __('The clickable label, e.g. “Ask a question” or “Enquire now”.', 'enquire'), $settings);
+                            $this->textRow('button_text', __('Button label', 'enquire'), __('The wording shoppers click to open the enquiry form, e.g. “Ask a question” or “Enquire now”.', 'enquire'), $settings, $defaults);
                             ?>
                         </tbody>
                     </table>
@@ -158,19 +159,19 @@ final class Settings implements HasHooks
 
                 <div class="enquire-admin__section">
                     <h2><?php esc_html_e('Form fields', 'enquire'); ?></h2>
-                    <p class="enquire-admin__section-intro"><?php esc_html_e('Field labels and which fields a shopper must complete. Empty labels fall back to the built-in defaults.', 'enquire'); ?></p>
+                    <p class="enquire-admin__section-intro"><?php esc_html_e('The labels inside the enquiry dialog and which fields a shopper must complete before they can send. Clear any label to restore its packaged default.', 'enquire'); ?></p>
 
                     <table class="form-table" role="presentation">
                         <tbody>
                             <?php
-                            $this->textRow('form_title', __('Form title', 'enquire'), __('Heading shown at the top of the dialog.', 'enquire'), $settings);
-                            $this->textRow('name_label', __('Name field label', 'enquire'), __('Label for the name input.', 'enquire'), $settings);
-                            $this->textRow('email_label', __('Email field label', 'enquire'), __('Label for the email input.', 'enquire'), $settings);
-                            $this->textRow('message_label', __('Message field label', 'enquire'), __('Label for the message textarea.', 'enquire'), $settings);
-                            $this->textRow('submit_text', __('Submit button label', 'enquire'), __('Label for the send button.', 'enquire'), $settings);
-                            $this->checkboxRow('require_name', __('Require name', 'enquire'), __('Make the name field required.', 'enquire'), $settings);
-                            $this->checkboxRow('require_email', __('Require email', 'enquire'), __('Make the email field required. A valid email format is always enforced when an address is entered.', 'enquire'), $settings);
-                            $this->checkboxRow('require_message', __('Require message', 'enquire'), __('Make the message field required.', 'enquire'), $settings);
+                            $this->textRow('form_title', __('Form title', 'enquire'), __('The heading at the top of the dialog — set the shopper’s expectation, e.g. “Ask a question about this product”.', 'enquire'), $settings, $defaults);
+                            $this->textRow('name_label', __('Name field label', 'enquire'), __('Sits above the name input. Customers see this wording, not “name”.', 'enquire'), $settings, $defaults);
+                            $this->textRow('email_label', __('Email field label', 'enquire'), __('Sits above the email input. This address becomes the Reply-To, so you can answer the shopper directly.', 'enquire'), $settings, $defaults);
+                            $this->textRow('message_label', __('Message field label', 'enquire'), __('Sits above the message box — prompt the kind of question you want, e.g. “Your question”.', 'enquire'), $settings, $defaults);
+                            $this->textRow('submit_text', __('Submit button label', 'enquire'), __('The wording on the send button inside the dialog.', 'enquire'), $settings, $defaults);
+                            $this->checkboxRow('require_name', __('Require name', 'enquire'), __('Shoppers cannot send until they fill in the name field.', 'enquire'), $settings);
+                            $this->checkboxRow('require_email', __('Require email', 'enquire'), __('Shoppers cannot send without an email. A valid format is always enforced when an address is entered, even if this is off — but leaving it off means you may not be able to reply.', 'enquire'), $settings);
+                            $this->checkboxRow('require_message', __('Require message', 'enquire'), __('Shoppers cannot send an empty enquiry.', 'enquire'), $settings);
                             ?>
                         </tbody>
                     </table>
@@ -178,14 +179,14 @@ final class Settings implements HasHooks
 
                 <div class="enquire-admin__section">
                     <h2><?php esc_html_e('Messaging', 'enquire'); ?></h2>
-                    <p class="enquire-admin__section-intro"><?php esc_html_e('What shoppers see after submitting, and the email subject line.', 'enquire'); ?></p>
+                    <p class="enquire-admin__section-intro"><?php esc_html_e('What shoppers see after submitting, and the subject line of the email you receive. Clear any field to restore its packaged default.', 'enquire'); ?></p>
 
                     <table class="form-table" role="presentation">
                         <tbody>
                             <?php
-                            $this->textRow('success_message', __('Success message', 'enquire'), __('A friendly confirmation shown inline once the enquiry is sent.', 'enquire'), $settings);
-                            $this->textRow('error_message', __('Error message', 'enquire'), __('Shown if sending fails (e.g. a mail error).', 'enquire'), $settings);
-                            $this->textRow('email_subject', __('Email subject', 'enquire'), __('Subject of the email you receive. {product} is replaced with the product name.', 'enquire'), $settings);
+                            $this->textRow('success_message', __('Success message', 'enquire'), __('Shown inline the moment an enquiry sends — reassure the shopper and set a reply expectation.', 'enquire'), $settings, $defaults);
+                            $this->textRow('error_message', __('Error message', 'enquire'), __('Shown if the email cannot be sent (e.g. a server mail error). Keep it calm and ask them to retry.', 'enquire'), $settings, $defaults);
+                            $this->textRow('email_subject', __('Email subject', 'enquire'), __('The subject line of the enquiry email you receive. {product} is replaced with the product name, so enquiries are easy to scan in your inbox.', 'enquire'), $settings, $defaults);
                             ?>
                         </tbody>
                     </table>
@@ -225,13 +226,17 @@ final class Settings implements HasHooks
     }
 
     /**
-     * Render a single text-input row in the form-table.
+     * Render a single text-input row in the form-table. The packaged default is
+     * shown as the placeholder, so a merchant who clears a field can still see
+     * what value will be used on save.
      *
      * @param array<string, mixed> $settings
+     * @param array<string, mixed> $defaults
      */
-    private function textRow(string $key, string $label, string $help, array $settings): void
+    private function textRow(string $key, string $label, string $help, array $settings, array $defaults = []): void
     {
-        $id = 'enquire_' . $key;
+        $id      = 'enquire_' . $key;
+        $default = (string) ($defaults[$key] ?? '');
         ?>
         <tr>
             <th scope="row">
@@ -243,6 +248,7 @@ final class Settings implements HasHooks
                     id="<?php echo esc_attr($id); ?>"
                     name="<?php echo esc_attr(self::OPTION); ?>[<?php echo esc_attr($key); ?>]"
                     value="<?php echo esc_attr((string) ($settings[$key] ?? '')); ?>"
+                    <?php if ($default !== '') : ?>placeholder="<?php echo esc_attr($default); ?>"<?php endif; ?>
                     class="regular-text"
                 />
                 <p class="description"><?php echo esc_html($help); ?></p>
@@ -313,9 +319,19 @@ final class Settings implements HasHooks
             $stored = [];
         }
 
+        return array_merge($this->defaults(), $stored);
+    }
+
+    /**
+     * The packaged default settings.
+     *
+     * @return array<string, mixed>
+     */
+    private function defaults(): array
+    {
         /** @var array<string, mixed> $defaults */
         $defaults = require ENQUIRE_DIR . 'config/defaults.php';
 
-        return array_merge($defaults, $stored);
+        return $defaults;
     }
 }
