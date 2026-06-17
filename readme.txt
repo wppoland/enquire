@@ -63,6 +63,10 @@ Yes. Set the button text and form heading under **WooCommerce → Enquire**.
 1. The "Ask a question" form on a single product page.
 2. The WooCommerce → Enquire settings page.
 
+== External Services ==
+
+Enquire does not connect to any external service. Form submissions are sent to your own site over `admin-ajax.php` and never leave your server. Each enquiry is delivered with your site's own `wp_mail()` (WordPress core mail), using whatever mailer your site already has. The plugin stores only its own settings (the `enquire_settings` option) and a schema marker (`enquire_db_version`), plus a short-lived transient used for the per-visitor rate limit; enquiry content itself is not written to the database.
+
 == Changelog ==
 
 = 0.1.0 =
