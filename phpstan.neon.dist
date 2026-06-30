@@ -4,7 +4,7 @@ includes:
 parameters:
     level: 6
     paths:
-        - enquire.php
+        - plogins-enquire.php
         - src
         - config
     excludePaths:

@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       Enquire - Product Enquiry Form for WooCommerce
- * Plugin URI:        https://plogins.com/enquire/
+ * Plugin Name:       Plogins Enquire for WooCommerce
+ * Plugin URI:        https://plogins.com/plogins-enquire/
  * Description:        Add an Ask a Question form to products that emails the store owner.
- * Version:           0.1.1
+ * Version:           0.1.2
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce
@@ -11,7 +11,7 @@
  * Author URI:        https://wppoland.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       enquire
+ * Text Domain:       plogins-enquire
  * Domain Path:       /languages
  * WC requires at least: 8.0
  *
@@ -24,7 +24,7 @@ namespace Enquire;
 
 defined('ABSPATH') || exit;
 
-const VERSION     = '0.1.1';
+const VERSION     = '0.1.2';
 const PLUGIN_FILE = __FILE__;
 
 define('ENQUIRE_DIR', plugin_dir_path(__FILE__));
@@ -44,7 +44,7 @@ add_action('plugins_loaded', static function (): void {
     if (! class_exists('WooCommerce')) {
         add_action('admin_notices', static function (): void {
             echo '<div class="notice notice-error"><p>';
-            echo esc_html__('Enquire - Product Enquiry Form for WooCommerce requires WooCommerce to be active.', 'enquire');
+            echo esc_html__('Enquire - Product Enquiry Form for WooCommerce requires WooCommerce to be active.', 'plogins-enquire');
             echo '</p></div>';
         });
         return;

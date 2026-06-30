@@ -14,12 +14,12 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-$enquire_button_text = (string) ($settings['button_text'] ?? __('Ask a question', 'enquire'));
-$enquire_form_title  = (string) ($settings['form_title'] ?? __('Ask a question about this product', 'enquire'));
-$enquire_name_label  = (string) ($settings['name_label'] ?? __('Your name', 'enquire'));
-$enquire_email_label = (string) ($settings['email_label'] ?? __('Your email', 'enquire'));
-$enquire_msg_label   = (string) ($settings['message_label'] ?? __('Your question', 'enquire'));
-$enquire_submit_text = (string) ($settings['submit_text'] ?? __('Send enquiry', 'enquire'));
+$enquire_button_text = (string) ($settings['button_text'] ?? __('Ask a question', 'plogins-enquire'));
+$enquire_form_title  = (string) ($settings['form_title'] ?? __('Ask a question about this product', 'plogins-enquire'));
+$enquire_name_label  = (string) ($settings['name_label'] ?? __('Your name', 'plogins-enquire'));
+$enquire_email_label = (string) ($settings['email_label'] ?? __('Your email', 'plogins-enquire'));
+$enquire_msg_label   = (string) ($settings['message_label'] ?? __('Your question', 'plogins-enquire'));
+$enquire_submit_text = (string) ($settings['submit_text'] ?? __('Send enquiry', 'plogins-enquire'));
 
 $enquire_req_name  = ! empty($settings['require_name']);
 $enquire_req_email = ! empty($settings['require_email']);
@@ -51,7 +51,7 @@ $enquire_title_id  = $enquire_dialog_id . '-title';
         <div class="enquire__panel" data-enquire-panel>
             <div class="enquire__header">
                 <h2 class="enquire__title" id="<?php echo esc_attr($enquire_title_id); ?>"><?php echo esc_html($enquire_form_title); ?></h2>
-                <button type="button" class="enquire__close" data-enquire-close aria-label="<?php esc_attr_e('Close', 'enquire'); ?>">
+                <button type="button" class="enquire__close" data-enquire-close aria-label="<?php esc_attr_e('Close', 'plogins-enquire'); ?>">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -60,7 +60,7 @@ $enquire_title_id  = $enquire_dialog_id . '-title';
                 <?php
                 printf(
                     /* translators: %s: product name. */
-                    esc_html__('About: %s', 'enquire'),
+                    esc_html__('About: %s', 'plogins-enquire'),
                     '<strong>' . esc_html($product->get_name()) . '</strong>'
                 );
                 ?>
@@ -78,7 +78,7 @@ $enquire_title_id  = $enquire_dialog_id . '-title';
                 // input itself (inert + aria-hidden, no accessible name).
                 ?>
                 <div class="enquire__hp">
-                    <span aria-hidden="true"><?php esc_html_e('Leave this field empty', 'enquire'); ?></span>
+                    <span aria-hidden="true"><?php esc_html_e('Leave this field empty', 'plogins-enquire'); ?></span>
                     <input
                         type="text"
                         name="<?php echo esc_attr($honeypot); ?>"

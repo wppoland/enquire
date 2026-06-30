@@ -49,8 +49,8 @@ final class Settings implements HasHooks
     {
         add_submenu_page(
             'woocommerce',
-            __('Enquire Settings', 'enquire'),
-            __('Enquire', 'enquire'),
+            __('Enquire Settings', 'plogins-enquire'),
+            __('Enquire', 'plogins-enquire'),
             'manage_woocommerce',
             self::PAGE,
             [$this, 'renderPage'],
@@ -95,8 +95,8 @@ final class Settings implements HasHooks
                     </svg>
                 </span>
                 <div class="enquire-admin__intro-text">
-                    <h2><?php esc_html_e('Let shoppers ask about a product before they buy', 'enquire'); ?></h2>
-                    <p><?php esc_html_e('Enquire adds an “Ask a question” button to your single product pages. Clicking it opens an accessible form (name, email, message) that emails you the question with the product details, no data is stored.', 'enquire'); ?></p>
+                    <h2><?php esc_html_e('Let shoppers ask about a product before they buy', 'plogins-enquire'); ?></h2>
+                    <p><?php esc_html_e('Enquire adds an “Ask a question” button to your single product pages. Clicking it opens an accessible form (name, email, message) that emails you the question with the product details, no data is stored.', 'plogins-enquire'); ?></p>
                 </div>
             </div>
 
@@ -104,13 +104,13 @@ final class Settings implements HasHooks
                 <?php settings_fields(self::PAGE); ?>
 
                 <div class="enquire-admin__section">
-                    <h2><?php esc_html_e('General', 'enquire'); ?></h2>
-                    <p class="enquire-admin__section-intro"><?php esc_html_e('The master switch and where enquiries are delivered.', 'enquire'); ?></p>
+                    <h2><?php esc_html_e('General', 'plogins-enquire'); ?></h2>
+                    <p class="enquire-admin__section-intro"><?php esc_html_e('The master switch and where enquiries are delivered.', 'plogins-enquire'); ?></p>
 
                     <table class="form-table" role="presentation">
                         <tbody>
                             <tr>
-                                <th scope="row"><?php esc_html_e('Enable enquiries', 'enquire'); ?></th>
+                                <th scope="row"><?php esc_html_e('Enable enquiries', 'plogins-enquire'); ?></th>
                                 <td>
                                     <label for="enquire_enabled">
                                         <input
@@ -120,13 +120,13 @@ final class Settings implements HasHooks
                                             value="1"
                                             <?php checked((bool) ($settings['enabled'] ?? false), true); ?>
                                         />
-                                        <?php esc_html_e('Show the “Ask a question” button on single product pages.', 'enquire'); ?>
+                                        <?php esc_html_e('Show the “Ask a question” button on single product pages.', 'plogins-enquire'); ?>
                                     </label>
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    <label for="enquire_recipient"><?php esc_html_e('Recipient email', 'enquire'); ?></label>
+                                    <label for="enquire_recipient"><?php esc_html_e('Recipient email', 'plogins-enquire'); ?></label>
                                 </th>
                                 <td>
                                     <input
@@ -137,7 +137,7 @@ final class Settings implements HasHooks
                                         class="regular-text"
                                         placeholder="<?php echo esc_attr((string) get_option('admin_email')); ?>"
                                     />
-                                    <p class="description"><?php esc_html_e('Enquiries are emailed here. Leave empty to use your site’s admin email. The customer’s address is set as Reply-To so you can reply directly.', 'enquire'); ?></p>
+                                    <p class="description"><?php esc_html_e('Enquiries are emailed here. Leave empty to use your site’s admin email. The customer’s address is set as Reply-To so you can reply directly.', 'plogins-enquire'); ?></p>
                                 </td>
                             </tr>
                         </tbody>
@@ -145,48 +145,48 @@ final class Settings implements HasHooks
                 </div>
 
                 <div class="enquire-admin__section">
-                    <h2><?php esc_html_e('Trigger button', 'enquire'); ?></h2>
-                    <p class="enquire-admin__section-intro"><?php esc_html_e('The enquiry button shown after the add-to-cart button on the product page. Clear any text field below to restore its packaged default (shown as the greyed hint).', 'enquire'); ?></p>
+                    <h2><?php esc_html_e('Trigger button', 'plogins-enquire'); ?></h2>
+                    <p class="enquire-admin__section-intro"><?php esc_html_e('The enquiry button shown after the add-to-cart button on the product page. Clear any text field below to restore its packaged default (shown as the greyed hint).', 'plogins-enquire'); ?></p>
 
                     <table class="form-table" role="presentation">
                         <tbody>
                             <?php
-                            $this->textRow('button_text', __('Button label', 'enquire'), __('The wording shoppers click to open the enquiry form, e.g. “Ask a question” or “Enquire now”.', 'enquire'), $settings, $defaults);
+                            $this->textRow('button_text', __('Button label', 'plogins-enquire'), __('The wording shoppers click to open the enquiry form, e.g. “Ask a question” or “Enquire now”.', 'plogins-enquire'), $settings, $defaults);
                             ?>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="enquire-admin__section">
-                    <h2><?php esc_html_e('Form fields', 'enquire'); ?></h2>
-                    <p class="enquire-admin__section-intro"><?php esc_html_e('The labels inside the enquiry dialog and which fields a shopper must complete before they can send. Clear any label to restore its packaged default.', 'enquire'); ?></p>
+                    <h2><?php esc_html_e('Form fields', 'plogins-enquire'); ?></h2>
+                    <p class="enquire-admin__section-intro"><?php esc_html_e('The labels inside the enquiry dialog and which fields a shopper must complete before they can send. Clear any label to restore its packaged default.', 'plogins-enquire'); ?></p>
 
                     <table class="form-table" role="presentation">
                         <tbody>
                             <?php
-                            $this->textRow('form_title', __('Form title', 'enquire'), __('The heading at the top of the dialog, set the shopper’s expectation, e.g. “Ask a question about this product”.', 'enquire'), $settings, $defaults);
-                            $this->textRow('name_label', __('Name field label', 'enquire'), __('Sits above the name input. Customers see this wording, not “name”.', 'enquire'), $settings, $defaults);
-                            $this->textRow('email_label', __('Email field label', 'enquire'), __('Sits above the email input. This address becomes the Reply-To, so you can answer the shopper directly.', 'enquire'), $settings, $defaults);
-                            $this->textRow('message_label', __('Message field label', 'enquire'), __('Sits above the message box, prompt the kind of question you want, e.g. “Your question”.', 'enquire'), $settings, $defaults);
-                            $this->textRow('submit_text', __('Submit button label', 'enquire'), __('The wording on the send button inside the dialog.', 'enquire'), $settings, $defaults);
-                            $this->checkboxRow('require_name', __('Require name', 'enquire'), __('Shoppers cannot send until they fill in the name field.', 'enquire'), $settings);
-                            $this->checkboxRow('require_email', __('Require email', 'enquire'), __('Shoppers cannot send without an email. A valid format is always enforced when an address is entered, even if this is off, but leaving it off means you may not be able to reply.', 'enquire'), $settings);
-                            $this->checkboxRow('require_message', __('Require message', 'enquire'), __('Shoppers cannot send an empty enquiry.', 'enquire'), $settings);
+                            $this->textRow('form_title', __('Form title', 'plogins-enquire'), __('The heading at the top of the dialog, set the shopper’s expectation, e.g. “Ask a question about this product”.', 'plogins-enquire'), $settings, $defaults);
+                            $this->textRow('name_label', __('Name field label', 'plogins-enquire'), __('Sits above the name input. Customers see this wording, not “name”.', 'plogins-enquire'), $settings, $defaults);
+                            $this->textRow('email_label', __('Email field label', 'plogins-enquire'), __('Sits above the email input. This address becomes the Reply-To, so you can answer the shopper directly.', 'plogins-enquire'), $settings, $defaults);
+                            $this->textRow('message_label', __('Message field label', 'plogins-enquire'), __('Sits above the message box, prompt the kind of question you want, e.g. “Your question”.', 'plogins-enquire'), $settings, $defaults);
+                            $this->textRow('submit_text', __('Submit button label', 'plogins-enquire'), __('The wording on the send button inside the dialog.', 'plogins-enquire'), $settings, $defaults);
+                            $this->checkboxRow('require_name', __('Require name', 'plogins-enquire'), __('Shoppers cannot send until they fill in the name field.', 'plogins-enquire'), $settings);
+                            $this->checkboxRow('require_email', __('Require email', 'plogins-enquire'), __('Shoppers cannot send without an email. A valid format is always enforced when an address is entered, even if this is off, but leaving it off means you may not be able to reply.', 'plogins-enquire'), $settings);
+                            $this->checkboxRow('require_message', __('Require message', 'plogins-enquire'), __('Shoppers cannot send an empty enquiry.', 'plogins-enquire'), $settings);
                             ?>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="enquire-admin__section">
-                    <h2><?php esc_html_e('Messaging', 'enquire'); ?></h2>
-                    <p class="enquire-admin__section-intro"><?php esc_html_e('What shoppers see after submitting, and the subject line of the email you receive. Clear any field to restore its packaged default.', 'enquire'); ?></p>
+                    <h2><?php esc_html_e('Messaging', 'plogins-enquire'); ?></h2>
+                    <p class="enquire-admin__section-intro"><?php esc_html_e('What shoppers see after submitting, and the subject line of the email you receive. Clear any field to restore its packaged default.', 'plogins-enquire'); ?></p>
 
                     <table class="form-table" role="presentation">
                         <tbody>
                             <?php
-                            $this->textRow('success_message', __('Success message', 'enquire'), __('Shown inline the moment an enquiry sends, reassure the shopper and set a reply expectation.', 'enquire'), $settings, $defaults);
-                            $this->textRow('error_message', __('Error message', 'enquire'), __('Shown if the email cannot be sent (e.g. a server mail error). Keep it calm and ask them to retry.', 'enquire'), $settings, $defaults);
-                            $this->textRow('email_subject', __('Email subject', 'enquire'), __('The subject line of the enquiry email you receive. {product} is replaced with the product name, so enquiries are easy to scan in your inbox.', 'enquire'), $settings, $defaults);
+                            $this->textRow('success_message', __('Success message', 'plogins-enquire'), __('Shown inline the moment an enquiry sends, reassure the shopper and set a reply expectation.', 'plogins-enquire'), $settings, $defaults);
+                            $this->textRow('error_message', __('Error message', 'plogins-enquire'), __('Shown if the email cannot be sent (e.g. a server mail error). Keep it calm and ask them to retry.', 'plogins-enquire'), $settings, $defaults);
+                            $this->textRow('email_subject', __('Email subject', 'plogins-enquire'), __('The subject line of the enquiry email you receive. {product} is replaced with the product name, so enquiries are easy to scan in your inbox.', 'plogins-enquire'), $settings, $defaults);
                             ?>
                         </tbody>
                     </table>

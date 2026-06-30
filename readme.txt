@@ -1,11 +1,11 @@
-=== Enquire - Product Enquiry Form for WooCommerce ===
+=== Plogins Enquire for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, product enquiry, ask a question, contact form, product question
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
 Requires Plugins: woocommerce
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,15 +17,14 @@ Enquire adds an "Ask a question" button to your WooCommerce single product pages
 
 Nothing is stored in your database. Each enquiry is sent by email, and the shopper's address is used as the Reply-To header so you can answer straight from your inbox.
 
-The code is on GitHub at https://github.com/wppoland/enquire if you want to read it, report a bug, or send a patch.
+The code is on GitHub at https://github.com/wppoland/plogins-enquire if you want to read it, report a bug, or send a patch.
 
 = Documentation and links =
 
-* **Documentation** - https://plogins.com/enquire/docs/
-* **Plugin page** - https://plogins.com/enquire/
-* **Source code** - https://github.com/wppoland/enquire
-* **Bug reports and feature requests** - https://github.com/wppoland/enquire/issues
-* **Discussions and questions** - https://github.com/wppoland/enquire/discussions
+* **Documentation** - https://plogins.com/plogins-enquire/docs/
+* **Plugin page** - https://plogins.com/plogins-enquire/
+* **Source code** - https://github.com/wppoland/plogins-enquire
+* **Bug reports and feature requests** - https://github.com/wppoland/plogins-enquire/issues
 
 
 = Features =
@@ -77,6 +76,9 @@ Yes. Set the button text and form heading under **WooCommerce → Enquire**.
 Enquire does not connect to any external service. Form submissions are sent to your own site over `admin-ajax.php` and never leave your server. Each enquiry is delivered with your site's own `wp_mail()` (WordPress core mail), using whatever mailer your site already has. The plugin stores only its own settings (the `enquire_settings` option) and a schema marker (`enquire_db_version`), plus a short-lived transient used for the per-visitor rate limit; enquiry content itself is not written to the database.
 
 == Changelog ==
+
+= 0.1.2 =
+* Renamed to Plogins Enquire for WooCommerce for a more distinctive plugin name.
 
 = 0.1.1 =
 * Adds extension hooks for form fields, validation, enquiry payload data and outgoing email arguments.

@@ -119,13 +119,13 @@ final class EnquiryService implements HasHooks
 
         if (! check_ajax_referer(self::NONCE_ACTION, 'nonce', false)) {
             wp_send_json_error([
-                'message' => __('Your session expired. Please reload the page and try again.', 'enquire'),
+                'message' => __('Your session expired. Please reload the page and try again.', 'plogins-enquire'),
             ], 400);
         }
 
         if ($this->isRateLimited()) {
             wp_send_json_error([
-                'message' => __('Please wait a moment before sending another enquiry.', 'enquire'),
+                'message' => __('Please wait a moment before sending another enquiry.', 'plogins-enquire'),
             ], 429);
         }
 
@@ -133,7 +133,7 @@ final class EnquiryService implements HasHooks
         $product   = $productId > 0 ? wc_get_product($productId) : null;
         if (! $product instanceof \WC_Product) {
             wp_send_json_error([
-                'message' => (string) ($settings['error_message'] ?? __('Sorry, something went wrong. Please try again.', 'enquire')),
+                'message' => (string) ($settings['error_message'] ?? __('Sorry, something went wrong. Please try again.', 'plogins-enquire')),
             ], 400);
         }
 
@@ -176,7 +176,7 @@ final class EnquiryService implements HasHooks
         $sent = $this->sendEmail($settings, $product, $enquiry);
         if (! $sent) {
             wp_send_json_error([
-                'message' => (string) ($settings['error_message'] ?? __('Sorry, something went wrong. Please try again.', 'enquire')),
+                'message' => (string) ($settings['error_message'] ?? __('Sorry, something went wrong. Please try again.', 'plogins-enquire')),
             ], 500);
         }
 
@@ -196,7 +196,7 @@ final class EnquiryService implements HasHooks
         do_action('enquire/enquiry_sent', $product, $enquiry);
 
         wp_send_json_success([
-            'message' => (string) ($settings['success_message'] ?? __('Thanks! Your question has been sent.', 'enquire')),
+            'message' => (string) ($settings['success_message'] ?? __('Thanks! Your question has been sent.', 'plogins-enquire')),
         ]);
     }
 
@@ -211,21 +211,21 @@ final class EnquiryService implements HasHooks
         $errors = [];
 
         if (! empty($settings['require_name']) && $name === '') {
-            $errors[] = __('Please enter your name.', 'enquire');
+            $errors[] = __('Please enter your name.', 'plogins-enquire');
         }
 
         if (! empty($settings['require_email'])) {
             if ($email === '') {
-                $errors[] = __('Please enter your email address.', 'enquire');
+                $errors[] = __('Please enter your email address.', 'plogins-enquire');
             } elseif (! is_email($email)) {
-                $errors[] = __('Please enter a valid email address.', 'enquire');
+                $errors[] = __('Please enter a valid email address.', 'plogins-enquire');
             }
         } elseif ($email !== '' && ! is_email($email)) {
-            $errors[] = __('Please enter a valid email address.', 'enquire');
+            $errors[] = __('Please enter a valid email address.', 'plogins-enquire');
         }
 
         if (! empty($settings['require_message']) && $message === '') {
-            $errors[] = __('Please enter your question.', 'enquire');
+            $errors[] = __('Please enter your question.', 'plogins-enquire');
         }
 
         return $errors;
@@ -248,7 +248,7 @@ final class EnquiryService implements HasHooks
         $subjectTpl  = (string) ($settings['email_subject'] ?? 'Product enquiry: {product}');
         $subject     = str_replace('{product}', $productName, $subjectTpl);
 
-        $notProvided = __('(not provided)', 'enquire');
+        $notProvided = __('(not provided)', 'plogins-enquire');
         $name         = isset($enquiry['name']) ? (string) $enquiry['name'] : '';
         $email        = isset($enquiry['email']) ? (string) $enquiry['email'] : '';
         $message      = isset($enquiry['message']) ? (string) $enquiry['message'] : '';
@@ -257,16 +257,16 @@ final class EnquiryService implements HasHooks
 
         $lines = [
             /* translators: %s: product name. */
-            sprintf(__('New product enquiry for: %s', 'enquire'), $productName),
+            sprintf(__('New product enquiry for: %s', 'plogins-enquire'), $productName),
             (string) $product->get_permalink(),
             '',
             /* translators: %s: customer name. */
-            sprintf(__('Name: %s', 'enquire'), $nameValue),
+            sprintf(__('Name: %s', 'plogins-enquire'), $nameValue),
             /* translators: %s: customer email. */
-            sprintf(__('Email: %s', 'enquire'), $emailValue),
+            sprintf(__('Email: %s', 'plogins-enquire'), $emailValue),
             '',
-            __('Message:', 'enquire'),
-            $message !== '' ? $message : __('(no message)', 'enquire'),
+            __('Message:', 'plogins-enquire'),
+            $message !== '' ? $message : __('(no message)', 'plogins-enquire'),
         ];
 
         $body = implode("\n", $lines);
